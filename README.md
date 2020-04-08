@@ -1,0 +1,1 @@
+Rest API básica para criação, listagem, atualização e remoção dos repositórios, e além disso permitir que os repositórios possam receber "likes".
