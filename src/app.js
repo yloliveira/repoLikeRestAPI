@@ -40,8 +40,17 @@ app.put("/repositories/:id", (request, response) => {
   return response.json({ result: true });
 });
 
-app.delete("/repositories/:id", (req, res) => {
-  // TODO
+app.delete("/repositories/:id", (request, response) => {
+  const { id } = request.params;
+  const repositoryIndex = repositories.findIndex((repo) => repo.id === id);
+
+  if (repositoryIndex < 0) {
+    return response.status(400).json({ error: "Repository not found" });
+  }
+
+  repositories.splice(repositoryIndex, 1);
+
+  return response.json({ result: true });
 });
 
 app.post("/repositories/:id/like", (request, response) => {
