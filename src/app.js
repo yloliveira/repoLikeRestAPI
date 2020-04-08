@@ -29,7 +29,7 @@ app.post("/repositories", (request, response) => {
   const repository = { id: uuid(), title, url, techs, likes: 0 };
   repositories.push(repository);
 
-  return response.json(repositories);
+  return response.json(repository);
 });
 
 app.put("/repositories/:id", (request, response) => {
@@ -48,7 +48,7 @@ app.put("/repositories/:id", (request, response) => {
     techs,
   };
 
-  return response.json({ result: true });
+  return response.json(repositories[repositoryIndex]);
 });
 
 app.delete("/repositories/:id", (request, response) => {
@@ -61,7 +61,7 @@ app.delete("/repositories/:id", (request, response) => {
 
   repositories.splice(repositoryIndex, 1);
 
-  return response.status(204).json();
+  return response.status(204).send();
 });
 
 app.post("/repositories/:id/like", (request, response) => {
